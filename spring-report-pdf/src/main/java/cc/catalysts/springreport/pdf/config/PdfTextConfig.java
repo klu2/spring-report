@@ -1,19 +1,20 @@
-package cc.catalysts.springreport.pdf.utils;
+package cc.catalysts.springreport.pdf.config;
 
+import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.awt.*;
 import java.util.Map;
 
-public class PdfReportTextConfig {
+public class PdfTextConfig {
 
     private int fontSize;
     private PDFont font;
     private ReportFontType fontType;
     private Color color;
 
-    public PdfReportTextConfig(int fontSize, PDType1Font defaultFont, ReportFontType fontType, Color color) {
+    public PdfTextConfig(int fontSize, PDType1Font defaultFont, ReportFontType fontType, Color color) {
         this.fontSize = fontSize;
         this.font = defaultFont;
         this.fontType = fontType;

@@ -3,7 +3,7 @@ package cc.catalysts.springreport.pdf.impl;
 import cc.catalysts.springreport.pdf.PdfReport;
 import cc.catalysts.springreport.pdf.PdfReportBuilder;
 import cc.catalysts.springreport.pdf.ReportTableBuilder;
-import cc.catalysts.springreport.pdf.config.PdfConfiguration;
+import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportPadding;
 import cc.catalysts.springreport.pdf.elements.ReportPageBreak;
@@ -17,10 +17,10 @@ import java.util.List;
  */
 class PdfReportBuilderImpl implements PdfReportBuilder {
 
-    private final PdfConfiguration configuration;
+    private final PdfConfig configuration;
     private List<ReportElement> elements = new ArrayList<>();
 
-    public PdfReportBuilderImpl(PdfConfiguration configuration) {
+    public PdfReportBuilderImpl(PdfConfig configuration) {
         this.configuration = configuration;
     }
 

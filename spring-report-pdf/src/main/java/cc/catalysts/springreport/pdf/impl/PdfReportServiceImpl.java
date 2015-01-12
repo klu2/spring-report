@@ -4,8 +4,8 @@ import cc.catalysts.springreport.pdf.PdfReport;
 import cc.catalysts.springreport.pdf.PdfReportBuilder;
 import cc.catalysts.springreport.pdf.PdfReportPrinter;
 import cc.catalysts.springreport.pdf.PdfReportService;
-import cc.catalysts.springreport.pdf.config.PdfConfiguration;
-import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
+import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfPageConfig;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.core.io.Resource;
@@ -19,9 +19,9 @@ import java.io.IOException;
 class PdfReportServiceImpl implements PdfReportService {
 
 
-    private final PdfConfiguration defaultConfiguration;
+    private final PdfConfig defaultConfiguration;
 
-    public PdfReportServiceImpl(PdfConfiguration defaultConfiguration) {
+    public PdfReportServiceImpl(PdfConfig defaultConfiguration) {
         this.defaultConfiguration = defaultConfiguration;
     }
 
@@ -31,12 +31,12 @@ class PdfReportServiceImpl implements PdfReportService {
     }
 
     @Override
-    public PdfReportBuilder createBuilder(PdfConfiguration config) {
+    public PdfReportBuilder createBuilder(PdfConfig config) {
         return new PdfReportBuilderImpl(config);
     }
 
     @Override
-    public void printToFile(PdfReport report, File outputFile, PdfReportPageConfig pageConfig, Resource templateResource) throws IOException {
+    public void printToFile(PdfReport report, File outputFile, PdfPageConfig pageConfig, Resource templateResource) throws IOException {
         try {
             // TODO we must not use the defaultConfiguration here
             PDDocument document = new PdfReportPrinter(defaultConfiguration).print(pageConfig, templateResource, report);
