@@ -129,9 +129,7 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
             return this;
         }
 
-        /**
-         * sets the row values and finishes the row
-         */
+
         public ReportTableBuilderImpl withValues(String... rowValues) {
             values.addAll(Arrays.asList(rowValues));
             return endRow();
