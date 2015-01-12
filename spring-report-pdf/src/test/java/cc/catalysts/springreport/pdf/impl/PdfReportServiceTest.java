@@ -1,9 +1,7 @@
 package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.*;
-import cc.catalysts.springreport.pdf.builders.ReportTableBuilder;
 import cc.catalysts.springreport.pdf.config.PdfConfiguration;
-import cc.catalysts.springreport.pdf.elements.ReportTable;
 import cc.catalysts.springreport.pdf.elements.ReportTextBox;
 import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
 import cc.catalysts.springreport.pdf.utils.PdfReportTextConfig;
@@ -88,13 +86,6 @@ public class PdfReportServiceTest {
     }
 
     PdfReport createTestReport() {
-        ReportTable testTable = new ReportTableBuilder()
-                .addColumn("COL1", 2).addColumn("COL2", 2).addColumn("COL3", 4)
-                .createRow()
-                .addValue("val1").addValue("val2").addValue("val3").endRow()
-                .createRow().withValues("x1", "x2", "x3")
-                .createRow().withValues("y1", "y2", "y3")
-                .build();
 
         StringBuilder longText = new StringBuilder();
         for (int i = 0; i < 10; i++) {
@@ -105,7 +96,13 @@ public class PdfReportServiceTest {
 
         return pdfReportService.createBuilder()
                 .beginNewSection("Test 1, Table", true)
-                .addElement(testTable)
+                .startTable()
+                .addColumn("COL1", 2).addColumn("COL2", 2).addColumn("COL3", 4)
+                .createRow()
+                .addValue("val1").addValue("val2").addValue("val3").endRow()
+                .createRow().withValues("x1", "x2", "x3")
+                .createRow().withValues("y1", "y2", "y3")
+                .endTable()
                 .beginNewSection("Test 2, Long text", true)
                 .addElement(new ReportTextBox(defaultConfig, longText.toString()))
                 .addText("testing default text")

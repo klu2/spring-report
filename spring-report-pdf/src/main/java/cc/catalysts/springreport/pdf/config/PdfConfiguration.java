@@ -16,6 +16,9 @@ public class PdfConfiguration {
     private PdfReportTextConfig headingConfig = new PdfReportTextConfig(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
     private PdfReportTextConfig textBodyConfig = new PdfReportTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
+    private PdfReportTextConfig tableTitleConfig = new PdfReportTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
+    private PdfReportTextConfig tableBodyConfig = new PdfReportTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
+
     public int getSectionPadding() {
         return sectionPadding;
     }
@@ -46,5 +49,21 @@ public class PdfConfiguration {
 
     public void setTextBodyConfig(PdfReportTextConfig textBodyConfig) {
         this.textBodyConfig = textBodyConfig;
+    }
+
+    public PdfReportTextConfig getTableTitleConfig() {
+        return tableTitleConfig;
+    }
+
+    public void setTableTitleConfig(PdfReportTextConfig tableTitleConfig) {
+        this.tableTitleConfig = tableTitleConfig;
+    }
+
+    public PdfReportTextConfig getTableBodyConfig() {
+        return tableBodyConfig;
+    }
+
+    public void setTableBodyConfig(PdfReportTextConfig tableBodyConfig) {
+        this.tableBodyConfig = tableBodyConfig;
     }
 }

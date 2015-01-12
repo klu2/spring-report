@@ -15,6 +15,8 @@ public interface PdfReportBuilder {
 
     PdfReportBuilder addElement(ReportElement element);
 
+    ReportTableBuilder startTable();
+
     PdfReport buildReport();
 
 }

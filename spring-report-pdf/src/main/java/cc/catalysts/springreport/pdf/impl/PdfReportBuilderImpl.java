@@ -2,6 +2,7 @@ package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.PdfReport;
 import cc.catalysts.springreport.pdf.PdfReportBuilder;
+import cc.catalysts.springreport.pdf.ReportTableBuilder;
 import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportPadding;
@@ -26,6 +27,11 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
     public PdfReportBuilderImpl addElement(ReportElement element) {
         elements.add(element);
         return this;
+    }
+
+    @Override
+    public ReportTableBuilder startTable() {
+        return new ReportTableBuilderImpl(configuration, this);
     }
 
     public PdfReport buildReport() {

@@ -27,7 +27,7 @@ public final class PdfBoxHelper {
     }
 
     /**
-     * Adds text of any length, will parse it if neccesary.
+     * Adds text of any length, will parse it if necessary.
      *
      * @param stream       stream
      * @param textConfig   text config
