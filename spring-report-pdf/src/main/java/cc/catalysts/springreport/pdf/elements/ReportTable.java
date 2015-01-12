@@ -269,7 +269,7 @@ public class ReportTable implements ReportElement {
                     for (int j = 0; j < elements[i].length; j++) {
                         if (elements[i][j].getHeight(cellWidths[j] * allowedWidth - cellPaddingX * 2) + currentHeight < allowedHeight) {
                             extraRows[0][j] = elements[i][j];
-                            extraRows[1][j] = new ReportTextBox(pdfConfig.getTextBodyConfig(), pdfConfig.getLineDistance(), "");
+                            extraRows[1][j] = new ReportTextBox(pdfConfig.getBodyText(), pdfConfig.getLineDistance(), "");
                         } else {
                             ReportElement[] extraSplit = elements[i][j].split(cellWidths[j] * allowedWidth - cellPaddingX * 2, allowedHeight - currentHeight - 2 * cellPaddingY);
                             extraRows[0][j] = extraSplit[0];
@@ -306,12 +306,12 @@ public class ReportTable implements ReportElement {
                 if (splits[0] != null)
                     first[0][i] = splits[0];
                 else
-                    first[0][i] = new ReportTextBox(pdfConfig.getTextBodyConfig(), pdfConfig.getLineDistance(), "");
+                    first[0][i] = new ReportTextBox(pdfConfig.getBodyText(), pdfConfig.getLineDistance(), "");
 
                 if (splits[1] != null)
                     next[0][i] = splits[1];
                 else
-                    next[0][i] = new ReportTextBox(pdfConfig.getTextBodyConfig(), pdfConfig.getLineDistance(), "");
+                    next[0][i] = new ReportTextBox(pdfConfig.getBodyText(), pdfConfig.getLineDistance(), "");
             }
             ReportTable firstLine = createNewTableWithClonedSettings(first);
             ReportTable nextLines = createNewTableWithClonedSettings(next);

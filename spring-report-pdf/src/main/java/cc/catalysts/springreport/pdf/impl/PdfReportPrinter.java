@@ -1,5 +1,6 @@
-package cc.catalysts.springreport.pdf;
+package cc.catalysts.springreport.pdf.impl;
 
+import cc.catalysts.springreport.pdf.PdfReport;
 import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportElementStatic;
@@ -22,7 +23,7 @@ import java.util.*;
 /**
  * @author Paul Klingelhuber
  */
-public class PdfReportPrinter {
+class PdfReportPrinter {
 
     private final PdfConfig configuration;
     private Map<ReportFontType, PDFont> fontLibrary = new HashMap<>();

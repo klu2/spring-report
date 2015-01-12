@@ -2,9 +2,9 @@ package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.*;
 import cc.catalysts.springreport.pdf.config.PdfConfig;
-import cc.catalysts.springreport.pdf.elements.ReportTextBox;
 import cc.catalysts.springreport.pdf.config.PdfPageConfig;
 import cc.catalysts.springreport.pdf.config.PdfTextConfig;
+import cc.catalysts.springreport.pdf.elements.ReportTextBox;
 import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.commons.io.FileUtils;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
@@ -42,40 +42,37 @@ public class PdfReportServiceTest {
 
     @Test
     public void buildReport() throws IOException {
+        File file = new File(outDirectory, "example.pdf");
         PdfReportBuilder builder = pdfReportService.createBuilder();
-        PdfReport report = builder.beginNewSection("test", true)
+        builder.beginNewSection("test", true)
                 .beginNewSection("foo", true)
                 .beginNewSection("bar", true)
-                .buildReport();
-        File file = new File(outDirectory, "example.pdf");
-        pdfReportService.printToFile(report, file, PdfPageConfig.getLandscapeA4Page(), null);
+                .printToFile(file, PdfPageConfig.getLandscapeA4Page(), null);
         Assert.assertTrue(file.exists());
     }
 
     @Test
     public void generateAndSavePlainExample() throws Exception {
-        PdfReport report = createTestReport();
-        pdfReportService.printToFile(report, new File(outDirectory, "example-special.pdf"), PdfPageConfig.getPortraitA4Page(), null);
+        createTestReport().printToFile(new File(outDirectory, "example-special.pdf"), PdfPageConfig.getPortraitA4Page(), null);
     }
 
     @Test
     public void specialCharactersExample() throws Exception {
-        PdfReport report = pdfReportService.createBuilder()
+        pdfReportService.createBuilder()
                 .addHeading("special chars test")
-                .addText("start 1€ foo@bar.at öäü !\"§$%&%&//()=?`îôâ Ružomberok " + (char) 8220 + "123456789" + (char) 8222 + " - end").buildReport();
-        pdfReportService.printToFile(report, new File(outDirectory, "example-special.pdf"), PdfPageConfig.getPortraitA4Page(), null);
+                .addText("start 1€ foo@bar.at öäü !\"§$%&%&//()=?`îôâ Ružomberok " + (char) 8220 + "123456789" + (char) 8222 + " - end")
+                .printToFile(new File(outDirectory, "example-special.pdf"), PdfPageConfig.getPortraitA4Page(), null);
     }
 
     @Test
     public void generateAndSaveTemplateExample() throws Exception {
-        PdfReport report = createTestReport();
         Resource template = new ClassPathResource("template.pdf");
-        pdfReportService.printToFile(report, new File(outDirectory, "example-template.pdf"), PdfPageConfig.getPortraitA4Page(), template);
+        createTestReport().printToFile(new File(outDirectory, "example-template.pdf"), PdfPageConfig.getPortraitA4Page(), template);
     }
 
     @Test
     public void generateAndSaveHeaderFooterSmallMarginExample() throws Exception {
-        PdfReport report = createTestReport();
+        PdfReport report = createTestReport().buildReport();
         PdfPageConfig pageConfig = PdfPageConfig.getPortraitA4PageWithSmallTopMargin();
 
         new PdfHeaderGenerator(new PdfConfig(), "one", "two", "three").addFooterToAllPages(report, pageConfig);
@@ -85,14 +82,14 @@ public class PdfReportServiceTest {
         pdfReportService.printToFile(report, new File(outDirectory, "example-header-footer.pdf"), PdfPageConfig.getPortraitA4Page(), null);
     }
 
-    PdfReport createTestReport() {
+    PdfReportBuilder createTestReport() {
 
         StringBuilder longText = new StringBuilder();
         for (int i = 0; i < 10; i++) {
             longText.append("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
         }
 
-        PdfTextConfig defaultConfig = new PdfTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
+        PdfTextConfig otherConfig = new PdfTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
 
         return pdfReportService.createBuilder()
                 .beginNewSection("Test 1, Table", true)
@@ -104,8 +101,9 @@ public class PdfReportServiceTest {
                 .createRow().withValues("y1", "y2", "y3")
                 .endTable()
                 .beginNewSection("Test 2, Long text", true)
-                .addElement(new ReportTextBox(defaultConfig, 1, longText.toString()))
+                .addElement(new ReportTextBox(otherConfig, 1, longText.toString()))
                 .addText("testing default text")
+                .addText(longText.toString(), otherConfig)
                 .beginNewSection("Test 3, Sections without pagebreak", false)
                 .addText("section text")
                 .beginNewSection("Test 3, Sections without pagebreak", false)
@@ -113,8 +111,7 @@ public class PdfReportServiceTest {
                 .beginNewSection("Test 3, Sections without pagebreak", false)
                 .addText("section text")
                 .beginNewSection("Test 3, Sections without pagebreak", false)
-                .addText("section text")
-                .buildReport();
+                .addText("section text");
     }
 
 }

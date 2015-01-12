@@ -2,7 +2,6 @@ package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.PdfReport;
 import cc.catalysts.springreport.pdf.PdfReportBuilder;
-import cc.catalysts.springreport.pdf.PdfReportPrinter;
 import cc.catalysts.springreport.pdf.PdfReportService;
 import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.config.PdfPageConfig;
@@ -17,7 +16,6 @@ import java.io.IOException;
  * @author Klaus Lehner
  */
 class PdfReportServiceImpl implements PdfReportService {
-
 
     private final PdfConfig defaultConfiguration;
 
@@ -38,8 +36,7 @@ class PdfReportServiceImpl implements PdfReportService {
     @Override
     public void printToFile(PdfReport report, File outputFile, PdfPageConfig pageConfig, Resource templateResource) throws IOException {
         try {
-            // TODO we must not use the defaultConfiguration here
-            PDDocument document = new PdfReportPrinter(defaultConfiguration).print(pageConfig, templateResource, report);
+            PDDocument document = new PdfReportPrinter(report.getConfiguration()).print(pageConfig, templateResource, report);
             document.save(outputFile);
             document.close();
         } catch (COSVisitorException e) {

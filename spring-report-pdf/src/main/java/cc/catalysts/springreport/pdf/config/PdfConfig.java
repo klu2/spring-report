@@ -14,11 +14,12 @@ public class PdfConfig {
 
     private int sectionPadding = 10;
     private int headingPaddingAfter = 4;
-    private PdfTextConfig headingConfig = new PdfTextConfig(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
-    private PdfTextConfig textBodyConfig = new PdfTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
-    private PdfTextConfig tableTitleConfig = new PdfTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
-    private PdfTextConfig tableBodyConfig = new PdfTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
+    private PdfTextConfig heading1Text = new PdfTextConfig(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
+    private PdfTextConfig bodyText = new PdfTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
+
+    private PdfTextConfig tableTitleText = new PdfTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
+    private PdfTextConfig tableBodyText = new PdfTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
     private PdfTextConfig footerText = new PdfTextConfig(7, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
@@ -38,36 +39,36 @@ public class PdfConfig {
         this.headingPaddingAfter = headingPaddingAfter;
     }
 
-    public PdfTextConfig getHeadingConfig() {
-        return headingConfig;
+    public PdfTextConfig getHeading1Text() {
+        return heading1Text;
     }
 
-    public void setHeadingConfig(PdfTextConfig headingConfig) {
-        this.headingConfig = headingConfig;
+    public void setHeading1Text(PdfTextConfig heading1Text) {
+        this.heading1Text = heading1Text;
     }
 
-    public PdfTextConfig getTextBodyConfig() {
-        return textBodyConfig;
+    public PdfTextConfig getBodyText() {
+        return bodyText;
     }
 
-    public void setTextBodyConfig(PdfTextConfig textBodyConfig) {
-        this.textBodyConfig = textBodyConfig;
+    public void setBodyText(PdfTextConfig bodyText) {
+        this.bodyText = bodyText;
     }
 
-    public PdfTextConfig getTableTitleConfig() {
-        return tableTitleConfig;
+    public PdfTextConfig getTableTitleText() {
+        return tableTitleText;
     }
 
-    public void setTableTitleConfig(PdfTextConfig tableTitleConfig) {
-        this.tableTitleConfig = tableTitleConfig;
+    public void setTableTitleText(PdfTextConfig tableTitleText) {
+        this.tableTitleText = tableTitleText;
     }
 
-    public PdfTextConfig getTableBodyConfig() {
-        return tableBodyConfig;
+    public PdfTextConfig getTableBodyText() {
+        return tableBodyText;
     }
 
-    public void setTableBodyConfig(PdfTextConfig tableBodyConfig) {
-        this.tableBodyConfig = tableBodyConfig;
+    public void setTableBodyText(PdfTextConfig tableBodyText) {
+        this.tableBodyText = tableBodyText;
     }
 
     public PdfTextConfig getFooterText() {

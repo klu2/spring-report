@@ -94,14 +94,14 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
         int col = 0;
         // header
         for (col = 0; col < columnNames.size(); col++) {
-            result[row][col] = new ReportTextBox(pdfConfig.getTableTitleConfig(), pdfConfig.getLineDistance(), columnNames.get(col));
+            result[row][col] = new ReportTextBox(pdfConfig.getTableTitleText(), pdfConfig.getLineDistance(), columnNames.get(col));
         }
         row++;
         // body
         for (List<String> rowValues : tableValues) {
             col = 0;
             for (String value : rowValues) {
-                result[row][col] = new ReportTextBox(pdfConfig.getTableBodyConfig(), pdfConfig.getLineDistance(), value);
+                result[row][col] = new ReportTextBox(pdfConfig.getTableBodyText(), pdfConfig.getLineDistance(), value);
                 col++;
             }
             row++;

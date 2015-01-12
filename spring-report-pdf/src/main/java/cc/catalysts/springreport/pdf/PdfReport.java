@@ -1,5 +1,6 @@
 package cc.catalysts.springreport.pdf;
 
+import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportElementStatic;
 import cc.catalysts.springreport.pdf.elements.ReportPage;
@@ -11,9 +12,18 @@ import java.util.List;
 
 public class PdfReport {
 
+    private final PdfConfig configuration;
     private List<ReportElement> elements = new ArrayList<ReportElement>();
     private List<ReportElementStatic> staticElements = new ArrayList<ReportElementStatic>();
     private List<ReportElementStatic> staticElementsForEachPage = new ArrayList<ReportElementStatic>();
+
+    public PdfReport(PdfConfig configuration) {
+        this.configuration = configuration;
+    }
+
+    public PdfConfig getConfiguration() {
+        return configuration;
+    }
 
     public void addElement(ReportElement elem) {
         elements.add(elem);
