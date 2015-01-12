@@ -21,6 +21,7 @@
 **/test/coverage/
 **/dist
 **/npm-debug.log
+**/pdf-out
 data/
 .project
 *-ui.js

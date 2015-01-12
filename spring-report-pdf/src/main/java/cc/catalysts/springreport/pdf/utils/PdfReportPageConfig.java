@@ -13,6 +13,22 @@ public class PdfReportPageConfig {
     private float lineDistance;
     private float footer;
 
+    public static PdfReportPageConfig getPortraitA4Page() {
+        return new PdfReportPageConfig(595.27563F, 841.8898F, 28.346457F, 10, 100, 20, 1);
+    }
+
+    public static PdfReportPageConfig getPortraitA4PageWithSmallTopMargin() {
+        return new PdfReportPageConfig(595.27563F, 841.8898F, 28.346457F, 10, 20, 20, 1);
+    }
+
+    public static PdfReportPageConfig getPortraitA4PageWithDoubleMargins() {
+        return new PdfReportPageConfig(595.27563F, 841.8898F, 56.6929F, 56.6929F, 100, 20, 1);
+    }
+
+    public static PdfReportPageConfig getLandscapeA4Page() {
+        return new PdfReportPageConfig(841.8898F, 595.27563F, 28.346457F, 10, 100, 20, 1);
+    }
+
     public PdfReportPageConfig(float width, float height, float marginLeft, float marginRight, float marginTop, float marginBottom, float lineDistance) {
         this.width = width;
         this.height = height;

@@ -1,37 +1,26 @@
 package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.PdfReport;
+import cc.catalysts.springreport.pdf.PdfReportBuilder;
+import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportPadding;
 import cc.catalysts.springreport.pdf.elements.ReportPageBreak;
 import cc.catalysts.springreport.pdf.elements.ReportTextBox;
-import cc.catalysts.springreport.pdf.utils.PdfReportTextConfig;
-import cc.catalysts.springreport.pdf.utils.ReportFontType;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Paul Klingelhuber
+ * @author Klaus Lehner
  */
-public class PdfReportBuilderImpl {
+class PdfReportBuilderImpl implements PdfReportBuilder {
 
+    private final PdfConfiguration configuration;
     private List<ReportElement> elements = new ArrayList<>();
-    private PdfReportTextConfig headingConfig;
-    private PdfReportTextConfig textBodyConfig;
-    private static final int SECTION_PADDING = 10;
-    private static final int HEADING_PADDING_AFTER = 4;
 
-    public PdfReportBuilderImpl() {
-        this(new PdfReportTextConfig(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK),
-                new PdfReportTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK));
-    }
-
-    public PdfReportBuilderImpl(PdfReportTextConfig headingConfig, PdfReportTextConfig textBodyConfig) {
-        this.headingConfig = headingConfig;
-        this.textBodyConfig = textBodyConfig;
+    public PdfReportBuilderImpl(PdfConfiguration configuration) {
+        this.configuration = configuration;
     }
 
     public PdfReportBuilderImpl addElement(ReportElement element) {
@@ -47,23 +36,23 @@ public class PdfReportBuilderImpl {
         return report;
     }
 
-    public PdfReportBuilderImpl beginNewSection(String title, boolean startNewPage) {
+    public PdfReportBuilder beginNewSection(String title, boolean startNewPage) {
         if (startNewPage && !elements.isEmpty()) {
             elements.add(new ReportPageBreak());
         }
-        addElement(new ReportPadding(SECTION_PADDING));
+        addElement(new ReportPadding(configuration.getSectionPadding()));
         addHeading(title);
         return this;
     }
 
     public PdfReportBuilderImpl addHeading(String heading) {
-        addElement(new ReportTextBox(headingConfig, heading));
-        addElement(new ReportPadding(HEADING_PADDING_AFTER));
+        addElement(new ReportTextBox(configuration.getHeadingConfig(), heading));
+        addElement(new ReportPadding(configuration.getHeadingPaddingAfter()));
         return this;
     }
 
     public PdfReportBuilderImpl addText(String text) {
-        addElement(new ReportTextBox(textBodyConfig, text));
+        addElement(new ReportTextBox(configuration.getTextBodyConfig(), text));
         return this;
     }
 
