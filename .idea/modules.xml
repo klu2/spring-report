@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-report.iml" filepath="$PROJECT_DIR$/spring-report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-report-core/spring-report-core.iml" filepath="$PROJECT_DIR$/spring-report-core/spring-report-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-report-pdf/spring-report-pdf.iml" filepath="$PROJECT_DIR$/spring-report-pdf/spring-report-pdf.iml" />
+    </modules>
+  </component>
+</project>

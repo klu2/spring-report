@@ -1,0 +1,5 @@
+rootProject.name = 'spring-report'
+
+include 'spring-report-core'
+include 'spring-report-pdf'
+
