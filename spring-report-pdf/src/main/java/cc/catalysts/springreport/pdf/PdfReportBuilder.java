@@ -5,4 +5,6 @@ package cc.catalysts.springreport.pdf;
  */
 public interface PdfReportBuilder {
 
+    PdfReportBuilder beginNewSection(String title, boolean startNewPage);
+
 }

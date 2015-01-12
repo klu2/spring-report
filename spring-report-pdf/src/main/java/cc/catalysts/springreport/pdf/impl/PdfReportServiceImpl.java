@@ -2,7 +2,7 @@ package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.PdfReportBuilder;
 import cc.catalysts.springreport.pdf.PdfReportService;
-import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 
 /**
  * @author Klaus Lehner
@@ -18,7 +18,7 @@ public class PdfReportServiceImpl implements PdfReportService {
     }
 
     @Override
-    public PdfReportBuilder createBuilder(PdfConfig config) {
+    public PdfReportBuilder createBuilder(PdfConfiguration config) {
         return null;
     }
 }

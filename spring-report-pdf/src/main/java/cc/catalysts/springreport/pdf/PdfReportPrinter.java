@@ -1,11 +1,12 @@
 package cc.catalysts.springreport.pdf;
 
-import cc.catalysts.pdfreport.elements.ReportElement;
-import cc.catalysts.pdfreport.elements.ReportElementStatic;
-import cc.catalysts.pdfreport.elements.ReportImage;
-import cc.catalysts.pdfreport.elements.ReportTable;
-import cc.catalysts.pdfreport.utils.PdfReportPageConfig;
-import cc.catalysts.pdfreport.utils.ReportFontType;
+import cc.catalysts.springreport.pdf.elements.ReportElement;
+import cc.catalysts.springreport.pdf.elements.ReportElementStatic;
+import cc.catalysts.springreport.pdf.elements.ReportImage;
+import cc.catalysts.springreport.pdf.elements.ReportTable;
+import cc.catalysts.springreport.pdf.utils.PdfConfig;
+import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
+import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;

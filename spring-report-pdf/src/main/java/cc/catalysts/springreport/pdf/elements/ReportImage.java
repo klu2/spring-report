@@ -1,7 +1,7 @@
 package cc.catalysts.springreport.pdf.elements;
 
-import cc.catalysts.pdfreport.utils.ReportAlignType;
-import cc.catalysts.pdfreport.utils.ReportFontType;
+import cc.catalysts.springreport.pdf.utils.ReportAlignType;
+import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;

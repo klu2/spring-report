@@ -1,6 +1,6 @@
 package cc.catalysts.springreport.pdf;
 
-import cc.catalysts.pdfreport.utils.PdfReportPageConfig;
+import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,6 +1,6 @@
 package cc.catalysts.springreport.pdf;
 
-import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 
 /**
  * @author Klaus Lehner
@@ -9,5 +9,5 @@ public interface PdfReportService {
 
     PdfReportBuilder createBuilder();
 
-    PdfReportBuilder createBuilder(PdfConfig config);
+    PdfReportBuilder createBuilder(PdfConfiguration config);
 }

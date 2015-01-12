@@ -1,7 +1,7 @@
 package cc.catalysts.springreport.pdf.elements;
 
-import cc.catalysts.pdfreport.utils.PdfConfig;
-import cc.catalysts.pdfreport.utils.ReportFontType;
+import cc.catalysts.springreport.pdf.utils.PdfConfig;
+import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;

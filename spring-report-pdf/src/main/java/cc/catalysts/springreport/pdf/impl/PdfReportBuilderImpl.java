@@ -1,4 +1,4 @@
-package cc.catalysts.springreport.pdf.builders;
+package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.PdfReport;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * @author Paul Klingelhuber
  */
-public class ReportBuilder {
+public class PdfReportBuilderImpl {
 
     private List<ReportElement> elements = new ArrayList<>();
     private PdfReportTextConfig headingConfig;
@@ -24,17 +24,17 @@ public class ReportBuilder {
     private static final int SECTION_PADDING = 10;
     private static final int HEADING_PADDING_AFTER = 4;
 
-    public ReportBuilder() {
+    public PdfReportBuilderImpl() {
         this(new PdfReportTextConfig(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK),
                 new PdfReportTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK));
     }
 
-    public ReportBuilder(PdfReportTextConfig headingConfig, PdfReportTextConfig textBodyConfig) {
+    public PdfReportBuilderImpl(PdfReportTextConfig headingConfig, PdfReportTextConfig textBodyConfig) {
         this.headingConfig = headingConfig;
         this.textBodyConfig = textBodyConfig;
     }
 
-    public ReportBuilder addElement(ReportElement element) {
+    public PdfReportBuilderImpl addElement(ReportElement element) {
         elements.add(element);
         return this;
     }
@@ -47,7 +47,7 @@ public class ReportBuilder {
         return report;
     }
 
-    public ReportBuilder beginNewSection(String title, boolean startNewPage) {
+    public PdfReportBuilderImpl beginNewSection(String title, boolean startNewPage) {
         if (startNewPage && !elements.isEmpty()) {
             elements.add(new ReportPageBreak());
         }
@@ -56,13 +56,13 @@ public class ReportBuilder {
         return this;
     }
 
-    public ReportBuilder addHeading(String heading) {
+    public PdfReportBuilderImpl addHeading(String heading) {
         addElement(new ReportTextBox(headingConfig, heading));
         addElement(new ReportPadding(HEADING_PADDING_AFTER));
         return this;
     }
 
-    public ReportBuilder addText(String text) {
+    public PdfReportBuilderImpl addText(String text) {
         addElement(new ReportTextBox(textBodyConfig, text));
         return this;
     }
