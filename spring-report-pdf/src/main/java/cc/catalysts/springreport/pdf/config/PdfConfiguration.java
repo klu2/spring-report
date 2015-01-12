@@ -11,6 +11,8 @@ import java.awt.*;
  */
 public class PdfConfiguration {
 
+    private float lineDistance = 1;
+
     private int sectionPadding = 10;
     private int headingPaddingAfter = 4;
     private PdfReportTextConfig headingConfig = new PdfReportTextConfig(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
@@ -18,6 +20,8 @@ public class PdfConfiguration {
 
     private PdfReportTextConfig tableTitleConfig = new PdfReportTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
     private PdfReportTextConfig tableBodyConfig = new PdfReportTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
+
+    private PdfReportTextConfig footerText = new PdfReportTextConfig(7, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
     public int getSectionPadding() {
         return sectionPadding;
@@ -65,5 +69,21 @@ public class PdfConfiguration {
 
     public void setTableBodyConfig(PdfReportTextConfig tableBodyConfig) {
         this.tableBodyConfig = tableBodyConfig;
+    }
+
+    public PdfReportTextConfig getFooterText() {
+        return footerText;
+    }
+
+    public void setFooterText(PdfReportTextConfig footerText) {
+        this.footerText = footerText;
+    }
+
+    public float getLineDistance() {
+        return lineDistance;
+    }
+
+    public void setLineDistance(float lineDistance) {
+        this.lineDistance = lineDistance;
     }
 }

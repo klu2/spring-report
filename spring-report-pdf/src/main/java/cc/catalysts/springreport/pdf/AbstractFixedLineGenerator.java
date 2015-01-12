@@ -1,8 +1,8 @@
 package cc.catalysts.springreport.pdf;
 
+import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 import cc.catalysts.springreport.pdf.elements.ReportElementStatic;
 import cc.catalysts.springreport.pdf.elements.ReportTextBox;
-import cc.catalysts.springreport.pdf.utils.PdfConfig;
 import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
 import cc.catalysts.springreport.pdf.utils.ReportAlignType;
 import org.apache.commons.lang.StringUtils;
@@ -17,6 +17,7 @@ import java.util.List;
  * @author Paul Klingelhuber
  */
 public abstract class AbstractFixedLineGenerator {
+    private final PdfConfiguration pdfConfiguration;
     private String leftText;
     private String centerText;
     private String rightText;
@@ -25,7 +26,8 @@ public abstract class AbstractFixedLineGenerator {
     public static final String PAGE_TEMPLATE_TOTAL = "%TOTAL_PAGES%";
     public static final String DEFAULT_PAGE_NUMBER_TEMPLATE = "Page " + PAGE_TEMPLATE_CURR + " of " + PAGE_TEMPLATE_TOTAL;
 
-    public AbstractFixedLineGenerator(String leftText, String centerText, String rightText) {
+    public AbstractFixedLineGenerator(PdfConfiguration pdfConfiguration, String leftText, String centerText, String rightText) {
+        this.pdfConfiguration = pdfConfiguration;
         this.leftText = leftText;
         this.centerText = centerText;
         this.rightText = rightText;
@@ -40,17 +42,17 @@ public abstract class AbstractFixedLineGenerator {
         float w = pageConfig.getUsableWidth();
         List<ReportElementStatic> staticElements = new ArrayList<ReportElementStatic>();
         if (StringUtils.isNotBlank(leftText)) {
-            ReportTextBox footerElem = new ReportTextBox(PdfConfig.getTextFooter(), leftText);
+            ReportTextBox footerElem = new ReportTextBox(pdfConfiguration.getFooterText(), pdfConfiguration.getLineDistance(), leftText);
             footerElem.setAlign(ReportAlignType.LEFT);
             staticElements.add(new ReportElementStatic(footerElem, 0, x, y, w));
         }
         if (StringUtils.isNotBlank(centerText)) {
-            ReportTextBox footerElem = new ReportTextBox(PdfConfig.getTextFooter(), centerText);
+            ReportTextBox footerElem = new ReportTextBox(pdfConfiguration.getFooterText(), pdfConfiguration.getLineDistance(), centerText);
             footerElem.setAlign(ReportAlignType.CENTER);
             staticElements.add(new ReportElementStatic(footerElem, 0, x, y, w));
         }
         if (StringUtils.isNotBlank(rightText)) {
-            ReportTextBox footerElem = new ReportTextBox(PdfConfig.getTextFooter(), rightText);
+            ReportTextBox footerElem = new ReportTextBox(pdfConfiguration.getFooterText(), pdfConfiguration.getLineDistance(), rightText);
             footerElem.setAlign(ReportAlignType.RIGHT);
             staticElements.add(new ReportElementStatic(footerElem, 0, x, y, w));
         }

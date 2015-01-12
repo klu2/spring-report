@@ -1,21 +1,15 @@
 package cc.catalysts.springreport.pdf;
 
+import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  * @author Paul Klingelhuber
  */
 public class PdfFooterGenerator extends AbstractFixedLineGenerator {
 
-    public PdfFooterGenerator() {
-        this(DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(LocalDate.now()), "", DEFAULT_PAGE_NUMBER_TEMPLATE);
-    }
-
-    public PdfFooterGenerator(String leftText, String centerText, String rightText) {
-        super(leftText, centerText, rightText);
+    public PdfFooterGenerator(PdfConfiguration pdfConfiguration, String leftText, String centerText, String rightText) {
+        super(pdfConfiguration, leftText, centerText, rightText);
     }
 
     @Override

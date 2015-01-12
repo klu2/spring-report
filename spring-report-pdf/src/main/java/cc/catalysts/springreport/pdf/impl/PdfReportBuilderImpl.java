@@ -52,13 +52,13 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
     }
 
     public PdfReportBuilderImpl addHeading(String heading) {
-        addElement(new ReportTextBox(configuration.getHeadingConfig(), heading));
+        addElement(new ReportTextBox(configuration.getHeadingConfig(), configuration.getLineDistance(), heading));
         addElement(new ReportPadding(configuration.getHeadingPaddingAfter()));
         return this;
     }
 
     public PdfReportBuilderImpl addText(String text) {
-        addElement(new ReportTextBox(configuration.getTextBodyConfig(), text));
+        addElement(new ReportTextBox(configuration.getTextBodyConfig(), configuration.getLineDistance(), text));
         return this;
     }
 

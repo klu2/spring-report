@@ -38,7 +38,8 @@ class PdfReportServiceImpl implements PdfReportService {
     @Override
     public void printToFile(PdfReport report, File outputFile, PdfReportPageConfig pageConfig, Resource templateResource) throws IOException {
         try {
-            PDDocument document = new PdfReportPrinter().print(pageConfig, templateResource, report);
+            // TODO we must not use the defaultConfiguration here
+            PDDocument document = new PdfReportPrinter(defaultConfiguration).print(pageConfig, templateResource, report);
             document.save(outputFile);
             document.close();
         } catch (COSVisitorException e) {

@@ -78,8 +78,8 @@ public class PdfReportServiceTest {
         PdfReport report = createTestReport();
         PdfReportPageConfig pageConfig = PdfReportPageConfig.getPortraitA4PageWithSmallTopMargin();
 
-        new PdfHeaderGenerator("one", "two", "three").addFooterToAllPages(report, pageConfig);
-        new PdfFooterGenerator("left", "center", "right: " + PdfFooterGenerator.PAGE_TEMPLATE_CURR + "/"
+        new PdfHeaderGenerator(new PdfConfiguration(), "one", "two", "three").addFooterToAllPages(report, pageConfig);
+        new PdfFooterGenerator(new PdfConfiguration(), "left", "center", "right: " + PdfFooterGenerator.PAGE_TEMPLATE_CURR + "/"
                 + PdfFooterGenerator.PAGE_TEMPLATE_TOTAL).addFooterToAllPages(report, pageConfig);
 
         pdfReportService.printToFile(report, new File(outDirectory, "example-header-footer.pdf"), PdfReportPageConfig.getPortraitA4Page(), null);
@@ -104,7 +104,7 @@ public class PdfReportServiceTest {
                 .createRow().withValues("y1", "y2", "y3")
                 .endTable()
                 .beginNewSection("Test 2, Long text", true)
-                .addElement(new ReportTextBox(defaultConfig, longText.toString()))
+                .addElement(new ReportTextBox(defaultConfig, 1, longText.toString()))
                 .addText("testing default text")
                 .beginNewSection("Test 3, Sections without pagebreak", false)
                 .addText("section text")

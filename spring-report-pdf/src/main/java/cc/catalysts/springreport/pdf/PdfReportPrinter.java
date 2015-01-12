@@ -1,10 +1,10 @@
 package cc.catalysts.springreport.pdf;
 
+import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportElementStatic;
 import cc.catalysts.springreport.pdf.elements.ReportImage;
 import cc.catalysts.springreport.pdf.elements.ReportTable;
-import cc.catalysts.springreport.pdf.utils.PdfConfig;
 import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
 import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.exceptions.COSVisitorException;
@@ -24,9 +24,11 @@ import java.util.*;
  */
 public class PdfReportPrinter {
 
+    private final PdfConfiguration configuration;
     private Map<ReportFontType, PDFont> fontLibrary = new HashMap<>();
 
-    public PdfReportPrinter() {
+    public PdfReportPrinter(PdfConfiguration configuration) {
+        this.configuration = configuration;
         initDefaultFontTypes();
     }
 
@@ -49,7 +51,7 @@ public class PdfReportPrinter {
      * @throws java.io.IOException
      */
     public PDDocument print(PdfReportPageConfig pageConfig, Resource templateResource, PdfReport report) throws IOException {
-        pageConfig.setFooter(PdfConfig.getTextFooter().getFontSize() + pageConfig.getLineDistance());
+        pageConfig.setFooter(configuration.getFooterText().getFontSize() + pageConfig.getLineDistance());
 
         PrintData printData = new PrintData(templateResource, pageConfig);
         PrintCursor cursor = new PrintCursor();

@@ -82,7 +82,7 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
     }
 
     public ReportTable buildTableWithWidths(float[] widths) {
-        ReportTable reportTable = new ReportTable(widths, toArray(), null);
+        ReportTable reportTable = new ReportTable(pdfConfiguration, widths, toArray(), null);
         reportTable.setBorder(true);
         return reportTable;
     }
@@ -94,14 +94,14 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
         int col = 0;
         // header
         for (col = 0; col < columnNames.size(); col++) {
-            result[row][col] = new ReportTextBox(pdfConfiguration.getTableTitleConfig(), columnNames.get(col));
+            result[row][col] = new ReportTextBox(pdfConfiguration.getTableTitleConfig(), pdfConfiguration.getLineDistance(), columnNames.get(col));
         }
         row++;
         // body
         for (List<String> rowValues : tableValues) {
             col = 0;
             for (String value : rowValues) {
-                result[row][col] = new ReportTextBox(pdfConfiguration.getTableBodyConfig(), value);
+                result[row][col] = new ReportTextBox(pdfConfiguration.getTableBodyConfig(), pdfConfiguration.getLineDistance(), value);
                 col++;
             }
             row++;

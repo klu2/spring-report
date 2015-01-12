@@ -1,6 +1,7 @@
 package cc.catalysts.springreport.pdf;
 
 
+import cc.catalysts.springreport.pdf.config.PdfConfiguration;
 import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
 
 /**
@@ -9,8 +10,8 @@ import cc.catalysts.springreport.pdf.utils.PdfReportPageConfig;
 public class PdfHeaderGenerator extends AbstractFixedLineGenerator {
 
 
-    public PdfHeaderGenerator(String leftText, String centerText, String rightText) {
-        super(leftText, centerText, rightText);
+    public PdfHeaderGenerator(PdfConfiguration configuration, String leftText, String centerText, String rightText) {
+        super(configuration, leftText, centerText, rightText);
     }
 
     @Override
