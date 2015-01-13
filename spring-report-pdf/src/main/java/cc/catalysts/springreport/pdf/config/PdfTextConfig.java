@@ -21,6 +21,18 @@ public class PdfTextConfig {
         this.color = color;
     }
 
+    /**
+     * This constructor is used by spring when creating a font from properties.
+     * @param config e.g. 10,Times-Roman,normal,#000000
+     */
+    public PdfTextConfig(String config) {
+        String[] split = config.split(",");
+        fontSize = Integer.parseInt(split[0]);
+        font = new PDType1Font(split[1]);
+        fontType = ReportFontType.valueOf(split[2].toUpperCase());
+        color = new Color(Integer.valueOf(split[3].substring(1), 16));
+    }
+
     public int getFontSize() {
         return fontSize;
     }

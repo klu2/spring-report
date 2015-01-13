@@ -2,12 +2,14 @@ package cc.catalysts.springreport.pdf.config;
 
 import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.awt.*;
 
 /**
  * @author Klaus Lehner
  */
+@ConfigurationProperties(prefix = "cat.reporting.pdf", locations = "classpath:pdfreport.yaml", ignoreUnknownFields = false)
 public class PdfConfig {
 
     private float lineDistance = 1;

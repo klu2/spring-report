@@ -7,7 +7,9 @@ import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.config.PdfPageConfig;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,10 +17,12 @@ import java.io.IOException;
 /**
  * @author Klaus Lehner
  */
+@Service
 class PdfReportServiceImpl implements PdfReportService {
 
     private final PdfConfig defaultConfiguration;
 
+    @Autowired
     public PdfReportServiceImpl(PdfConfig defaultConfiguration) {
         this.defaultConfiguration = defaultConfiguration;
     }
