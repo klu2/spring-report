@@ -1,5 +1,7 @@
 package cc.catalysts.reporting.pdf;
 
+import cc.catalysts.reporting.pdf.elements.ReportTable;
+
 /**
  * @author Klaus Lehner
  */
@@ -10,4 +12,6 @@ public interface ReportTableBuilder {
     ReportTableRowBuilder createRow();
 
     PdfReportBuilder endTable();
+
+    ReportTable build();
 }

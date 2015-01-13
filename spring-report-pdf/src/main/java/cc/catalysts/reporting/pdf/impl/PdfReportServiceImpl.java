@@ -18,7 +18,7 @@ import java.io.IOException;
  * @author Klaus Lehner
  */
 @Service
-class PdfReportServiceImpl implements PdfReportService {
+public class PdfReportServiceImpl implements PdfReportService {
 
     private final PdfStyleSheet defaultConfiguration;
 

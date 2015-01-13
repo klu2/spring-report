@@ -10,10 +10,12 @@ import cc.catalysts.reporting.pdf.elements.ReportElement;
 import cc.catalysts.reporting.pdf.elements.ReportPadding;
 import cc.catalysts.reporting.pdf.elements.ReportPageBreak;
 import cc.catalysts.reporting.pdf.elements.ReportTextBox;
+import com.google.common.net.MediaType;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.core.io.Resource;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -74,6 +76,18 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
             document.close();
         } catch (COSVisitorException e) {
             throw new IOException("Error on generating PDF", e);
+        }
+    }
+
+    @Override
+    public void printToHttpServletResponse(HttpServletResponse response, String fileName, PdfPageLayout pageConfig, Resource templateResource) throws IOException {
+        PdfReport report = this.buildReport(pageConfig);
+        response.setContentType(MediaType.PDF.toString());
+        response.setHeader("Content-disposition", "attachment; filename=" + fileName);
+        try {
+            new PdfReportPrinter(configuration).printToStream(pageConfig, null, report, response.getOutputStream());
+        } catch (Exception e) {
+            throw new IOException("could not write result pdf", e);
         }
     }
 

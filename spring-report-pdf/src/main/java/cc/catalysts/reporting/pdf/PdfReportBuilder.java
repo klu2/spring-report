@@ -5,6 +5,7 @@ import cc.catalysts.reporting.pdf.config.PdfTextStyle;
 import cc.catalysts.reporting.pdf.elements.ReportElement;
 import org.springframework.core.io.Resource;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 
@@ -33,4 +34,5 @@ public interface PdfReportBuilder {
 
     void printToFile(File outputFile, PdfPageLayout pageConfig, Resource templateResource) throws IOException;
 
+    void printToHttpServletResponse(HttpServletResponse response, String fileName, PdfPageLayout pageConfig, Resource templateResource) throws IOException;
 }

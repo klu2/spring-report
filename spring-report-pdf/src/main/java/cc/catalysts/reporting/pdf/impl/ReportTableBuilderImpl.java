@@ -68,7 +68,7 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
     /**
      * build table taking column weights into account
      */
-    ReportTable build() {
+    public ReportTable build() {
         float[] widths = new float[columnNames.size()];
         long sum = 0;
         for (Integer weight : columnWeights) {
