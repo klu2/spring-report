@@ -2,28 +2,28 @@
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/PdfReport.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/config/PdfPageLayout.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/config/PdfTextStyle.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/AbstractReportElement.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/PdfBoxHelper.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportElement.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportElementStatic.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportImage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportPadding.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportPage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportPageBreak.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportTable.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportTextBox.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/impl/AbstractFixedLineGenerator.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/impl/PdfFooterGenerator.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/impl/PdfHeaderGenerator.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/impl/PdfReportBuilderImpl.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/impl/PdfReportPrinter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/impl/ReportTableBuilderImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/PdfReport.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/config/PdfPageLayout.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/config/PdfTextStyle.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/AbstractReportElement.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/PdfBoxHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportElement.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportElementStatic.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportImage.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportPadding.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportPage.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportPageBreak.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportTable.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/elements/ReportTextBox.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/impl/AbstractFixedLineGenerator.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/impl/PdfFooterGenerator.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/impl/PdfHeaderGenerator.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/impl/PdfReportBuilderImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/impl/PdfReportPrinter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/impl/ReportTableBuilderImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/utils/ReportAlignType.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/reporting/pdf/utils/ReportFontType.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/utils/PdfConfig.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/utils/ReportAlignType.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/utils/ReportFontType.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-report-pdf/src/test/resources/template.pdf" charset="UTF-8" />
   </component>
 </project>
