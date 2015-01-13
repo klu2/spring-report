@@ -23,9 +23,13 @@ public interface PdfReportBuilder {
 
     PdfReportBuilder addElement(ReportElement element);
 
+    PdfReportBuilder withHeaderOnAllPages(String left, String middle, String right);
+
+    PdfReportBuilder withFooterOnAllPages(String left, String middle, String right);
+
     ReportTableBuilder startTable();
 
-    PdfReport buildReport();
+    PdfReport buildReport(PdfPageConfig pageConfig);
 
     void printToFile(File outputFile, PdfPageConfig pageConfig, Resource templateResource) throws IOException;
 

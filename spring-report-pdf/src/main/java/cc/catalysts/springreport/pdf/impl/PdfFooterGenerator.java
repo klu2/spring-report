@@ -1,4 +1,4 @@
-package cc.catalysts.springreport.pdf;
+package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.config.PdfPageConfig;

@@ -1,8 +1,6 @@
 package cc.catalysts.springreport.pdf.impl;
 
-import cc.catalysts.springreport.pdf.PdfReport;
-import cc.catalysts.springreport.pdf.PdfReportBuilder;
-import cc.catalysts.springreport.pdf.ReportTableBuilder;
+import cc.catalysts.springreport.pdf.*;
 import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.config.PdfPageConfig;
 import cc.catalysts.springreport.pdf.config.PdfTextConfig;
@@ -26,6 +24,7 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
 
     private final PdfConfig configuration;
     private List<ReportElement> elements = new ArrayList<>();
+    private List<AbstractFixedLineGenerator> fixedLineGenerators = new ArrayList<>();
 
     public PdfReportBuilderImpl(PdfConfig configuration) {
         this.configuration = configuration;
@@ -37,14 +36,29 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
     }
 
     @Override
+    public PdfReportBuilder withHeaderOnAllPages(String left, String middle, String right) {
+        fixedLineGenerators.add(new PdfHeaderGenerator(configuration, left, middle, right));
+        return this;
+    }
+
+    @Override
+    public PdfReportBuilder withFooterOnAllPages(String left, String middle, String right) {
+        fixedLineGenerators.add(new PdfFooterGenerator(configuration, left, middle, right));
+        return this;
+    }
+
+    @Override
     public ReportTableBuilder startTable() {
         return new ReportTableBuilderImpl(configuration, this);
     }
 
-    public PdfReport buildReport() {
+    public PdfReport buildReport(PdfPageConfig pageConfig) {
         PdfReport report = new PdfReport(configuration);
         for (ReportElement element : elements) {
             report.addElement(element);
+        }
+        for (AbstractFixedLineGenerator generator : fixedLineGenerators) {
+            generator.addFooterToAllPages(report, pageConfig);
         }
         return report;
     }
@@ -52,7 +66,8 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
     @Override
     public void printToFile(File outputFile, PdfPageConfig pageConfig, Resource templateResource) throws IOException {
         try {
-            PDDocument document = new PdfReportPrinter(configuration).print(pageConfig, templateResource, this.buildReport());
+            PdfReport report = this.buildReport(pageConfig);
+            PDDocument document = new PdfReportPrinter(configuration).print(pageConfig, templateResource, report);
             document.save(outputFile);
             document.close();
         } catch (COSVisitorException e) {

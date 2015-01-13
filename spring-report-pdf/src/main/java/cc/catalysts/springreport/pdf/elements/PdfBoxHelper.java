@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class PdfBoxHelper {
+final class PdfBoxHelper {
 
     private static final Logger LOG = LoggerFactory.getLogger(PdfBoxHelper.class);
     private static final char FALLBACK_CHAR = '?';

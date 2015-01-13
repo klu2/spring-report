@@ -72,14 +72,12 @@ public class PdfReportServiceTest {
 
     @Test
     public void generateAndSaveHeaderFooterSmallMarginExample() throws Exception {
-        PdfReport report = createTestReport().buildReport();
-        PdfPageConfig pageConfig = PdfPageConfig.getPortraitA4PageWithSmallTopMargin();
+        PdfReportBuilder report = createTestReport()
+                .withHeaderOnAllPages("one", "two", "three")
+                .withFooterOnAllPages("left", "center", "right: " + PdfFooterGenerator.PAGE_TEMPLATE_CURR + "/"
+                        + PdfFooterGenerator.PAGE_TEMPLATE_TOTAL);
 
-        new PdfHeaderGenerator(new PdfConfig(), "one", "two", "three").addFooterToAllPages(report, pageConfig);
-        new PdfFooterGenerator(new PdfConfig(), "left", "center", "right: " + PdfFooterGenerator.PAGE_TEMPLATE_CURR + "/"
-                + PdfFooterGenerator.PAGE_TEMPLATE_TOTAL).addFooterToAllPages(report, pageConfig);
-
-        pdfReportService.printToFile(report, new File(outDirectory, "example-header-footer.pdf"), PdfPageConfig.getPortraitA4Page(), null);
+        report.printToFile(new File(outDirectory, "example-header-footer.pdf"), PdfPageConfig.getPortraitA4Page(), null);
     }
 
     PdfReportBuilder createTestReport() {

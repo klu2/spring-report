@@ -1,5 +1,6 @@
-package cc.catalysts.springreport.pdf;
+package cc.catalysts.springreport.pdf.impl;
 
+import cc.catalysts.springreport.pdf.PdfReport;
 import cc.catalysts.springreport.pdf.config.PdfConfig;
 import cc.catalysts.springreport.pdf.elements.ReportElementStatic;
 import cc.catalysts.springreport.pdf.elements.ReportTextBox;
