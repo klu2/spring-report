@@ -1,9 +1,9 @@
 package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.*;
-import cc.catalysts.springreport.pdf.config.PdfConfig;
-import cc.catalysts.springreport.pdf.config.PdfPageConfig;
-import cc.catalysts.springreport.pdf.config.PdfTextConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
+import cc.catalysts.springreport.pdf.config.PdfPageLayout;
+import cc.catalysts.springreport.pdf.config.PdfTextStyle;
 import cc.catalysts.springreport.pdf.elements.ReportTextBox;
 import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.commons.io.FileUtils;
@@ -37,7 +37,7 @@ public class PdfReportServiceTest {
 
     @Before
     public void before() {
-        pdfReportService = new PdfReportServiceImpl(new PdfConfig());
+        pdfReportService = new PdfReportServiceImpl(new PdfStyleSheet());
     }
 
     @Test
@@ -47,13 +47,13 @@ public class PdfReportServiceTest {
         builder.beginNewSection("test", true)
                 .beginNewSection("foo", true)
                 .beginNewSection("bar", true)
-                .printToFile(file, PdfPageConfig.getLandscapeA4Page(), null);
+                .printToFile(file, PdfPageLayout.getLandscapeA4Page(), null);
         Assert.assertTrue(file.exists());
     }
 
     @Test
     public void generateAndSavePlainExample() throws Exception {
-        createTestReport().printToFile(new File(outDirectory, "example-special.pdf"), PdfPageConfig.getPortraitA4Page(), null);
+        createTestReport().printToFile(new File(outDirectory, "example-special.pdf"), PdfPageLayout.getPortraitA4Page(), null);
     }
 
     @Test
@@ -61,13 +61,13 @@ public class PdfReportServiceTest {
         pdfReportService.createBuilder()
                 .addHeading("special chars test")
                 .addText("start 1€ foo@bar.at öäü !\"§$%&%&//()=?`îôâ Ružomberok " + (char) 8220 + "123456789" + (char) 8222 + " - end")
-                .printToFile(new File(outDirectory, "example-special.pdf"), PdfPageConfig.getPortraitA4Page(), null);
+                .printToFile(new File(outDirectory, "example-special.pdf"), PdfPageLayout.getPortraitA4Page(), null);
     }
 
     @Test
     public void generateAndSaveTemplateExample() throws Exception {
         Resource template = new ClassPathResource("template.pdf");
-        createTestReport().printToFile(new File(outDirectory, "example-template.pdf"), PdfPageConfig.getPortraitA4Page(), template);
+        createTestReport().printToFile(new File(outDirectory, "example-template.pdf"), PdfPageLayout.getPortraitA4Page(), template);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class PdfReportServiceTest {
                 .withFooterOnAllPages("left", "center", "right: " + PdfFooterGenerator.PAGE_TEMPLATE_CURR + "/"
                         + PdfFooterGenerator.PAGE_TEMPLATE_TOTAL);
 
-        report.printToFile(new File(outDirectory, "example-header-footer.pdf"), PdfPageConfig.getPortraitA4Page(), null);
+        report.printToFile(new File(outDirectory, "example-header-footer.pdf"), PdfPageLayout.getPortraitA4Page(), null);
     }
 
     PdfReportBuilder createTestReport() {
@@ -87,7 +87,7 @@ public class PdfReportServiceTest {
             longText.append("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
         }
 
-        PdfTextConfig otherConfig = new PdfTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
+        PdfTextStyle otherConfig = new PdfTextStyle(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
 
         return pdfReportService.createBuilder()
                 .beginNewSection("Test 1, Table", true)

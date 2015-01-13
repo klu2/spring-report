@@ -1,9 +1,9 @@
 package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.*;
-import cc.catalysts.springreport.pdf.config.PdfConfig;
-import cc.catalysts.springreport.pdf.config.PdfPageConfig;
-import cc.catalysts.springreport.pdf.config.PdfTextConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
+import cc.catalysts.springreport.pdf.config.PdfPageLayout;
+import cc.catalysts.springreport.pdf.config.PdfTextStyle;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportPadding;
 import cc.catalysts.springreport.pdf.elements.ReportPageBreak;
@@ -22,11 +22,11 @@ import java.util.List;
  */
 class PdfReportBuilderImpl implements PdfReportBuilder {
 
-    private final PdfConfig configuration;
+    private final PdfStyleSheet configuration;
     private List<ReportElement> elements = new ArrayList<>();
     private List<AbstractFixedLineGenerator> fixedLineGenerators = new ArrayList<>();
 
-    public PdfReportBuilderImpl(PdfConfig configuration) {
+    public PdfReportBuilderImpl(PdfStyleSheet configuration) {
         this.configuration = configuration;
     }
 
@@ -52,7 +52,7 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
         return new ReportTableBuilderImpl(configuration, this);
     }
 
-    public PdfReport buildReport(PdfPageConfig pageConfig) {
+    public PdfReport buildReport(PdfPageLayout pageConfig) {
         PdfReport report = new PdfReport(configuration);
         for (ReportElement element : elements) {
             report.addElement(element);
@@ -64,7 +64,7 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
     }
 
     @Override
-    public void printToFile(File outputFile, PdfPageConfig pageConfig, Resource templateResource) throws IOException {
+    public void printToFile(File outputFile, PdfPageLayout pageConfig, Resource templateResource) throws IOException {
         try {
             PdfReport report = this.buildReport(pageConfig);
             PDDocument document = new PdfReportPrinter(configuration).print(pageConfig, templateResource, report);
@@ -90,7 +90,7 @@ class PdfReportBuilderImpl implements PdfReportBuilder {
         return this;
     }
 
-    public PdfReportBuilderImpl addText(String text, PdfTextConfig textConfig) {
+    public PdfReportBuilderImpl addText(String text, PdfTextStyle textConfig) {
         addElement(new ReportTextBox(textConfig, configuration.getLineDistance(), text));
         return this;
     }

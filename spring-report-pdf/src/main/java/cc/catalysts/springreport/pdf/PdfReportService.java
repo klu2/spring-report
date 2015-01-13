@@ -1,7 +1,7 @@
 package cc.catalysts.springreport.pdf;
 
-import cc.catalysts.springreport.pdf.config.PdfConfig;
-import cc.catalysts.springreport.pdf.config.PdfPageConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
+import cc.catalysts.springreport.pdf.config.PdfPageLayout;
 import org.springframework.core.io.Resource;
 
 import java.io.File;
@@ -14,7 +14,7 @@ public interface PdfReportService {
 
     PdfReportBuilder createBuilder();
 
-    PdfReportBuilder createBuilder(PdfConfig config);
+    PdfReportBuilder createBuilder(PdfStyleSheet config);
 
-    void printToFile(PdfReport report, File outputFile, PdfPageConfig pageConfig, Resource templateResource) throws IOException;
+    void printToFile(PdfReport report, File outputFile, PdfPageLayout pageConfig, Resource templateResource) throws IOException;
 }

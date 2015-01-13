@@ -1,6 +1,6 @@
 package cc.catalysts.springreport.pdf.elements;
 
-import cc.catalysts.springreport.pdf.config.PdfTextConfig;
+import cc.catalysts.springreport.pdf.config.PdfTextStyle;
 import cc.catalysts.springreport.pdf.utils.ReportAlignType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.pdfbox.encoding.WinAnsiEncoding;
@@ -38,7 +38,7 @@ final class PdfBoxHelper {
      * @param text         text
      * @return ending Y position of this line
      */
-    public static float addText(PDPageContentStream stream, PdfTextConfig textConfig, float textX, float textY, float allowedWidth, float lineHeightD, ReportAlignType align, String text) {
+    public static float addText(PDPageContentStream stream, PdfTextStyle textConfig, float textX, float textY, float allowedWidth, float lineHeightD, ReportAlignType align, String text) {
         if (textConfig.getFont() == null || textConfig.getFont().getFontEncoding() instanceof WinAnsiEncoding) {
             // only necessary if the font doesn't support unicode
             text = fixString(text);
@@ -113,7 +113,7 @@ final class PdfBoxHelper {
      * @param textY      stating Y position of text
      * @param text       text
      */
-    public static void addTextSimple(PDPageContentStream stream, PdfTextConfig textConfig, float textX, float textY, String text) {
+    public static void addTextSimple(PDPageContentStream stream, PdfTextStyle textConfig, float textX, float textY, String text) {
         try {
             stream.setFont(textConfig.getFont(), textConfig.getFontSize());
             stream.setNonStrokingColor(textConfig.getColor());

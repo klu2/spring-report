@@ -1,6 +1,6 @@
 package cc.catalysts.springreport.pdf;
 
-import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan
-@EnableConfigurationProperties(value = PdfConfig.class)
+@EnableConfigurationProperties(value = PdfStyleSheet.class)
 public class PdfReportModule {
 }

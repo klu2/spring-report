@@ -1,6 +1,6 @@
 package cc.catalysts.springreport.pdf.elements;
 
-import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
 import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
@@ -18,7 +18,7 @@ public class ReportTable implements ReportElement {
     private static final float DEFAULT_CELL_PADDING_LEFT_RIGHT = 2;
     private static final float DEFAULT_CELL_PADDING_TOP_BOTTOM = 0;
     private static final int BORDER_Y_DELTA = 1;
-    private final PdfConfig pdfConfig;
+    private final PdfStyleSheet pdfStyleSheet;
 
     private float[] cellWidths;
     private ReportElement[][] elements;
@@ -40,8 +40,8 @@ public class ReportTable implements ReportElement {
      * @param cellWidths width of each column (the sum of elements must be 1)
      * @param elements   elements of each cell
      */
-    public ReportTable(PdfConfig pdfConfig, float[] cellWidths, ReportElement[][] elements, ReportElement[] title) {
-        this.pdfConfig = pdfConfig;
+    public ReportTable(PdfStyleSheet pdfStyleSheet, float[] cellWidths, ReportElement[][] elements, ReportElement[] title) {
+        this.pdfStyleSheet = pdfStyleSheet;
         if (elements == null || cellWidths == null) {
             throw new IllegalArgumentException("Arguments cant be null");
         }
@@ -195,7 +195,7 @@ public class ReportTable implements ReportElement {
 
 
     private ReportTable createNewTableWithClonedSettings(ReportElement[][] data) {
-        ReportTable newTable = new ReportTable(pdfConfig, cellWidths, data, title);
+        ReportTable newTable = new ReportTable(pdfStyleSheet, cellWidths, data, title);
         newTable.setBorder(border);
         newTable.setCellPaddingX(cellPaddingX);
         newTable.setCellPaddingY(cellPaddingY);
@@ -269,7 +269,7 @@ public class ReportTable implements ReportElement {
                     for (int j = 0; j < elements[i].length; j++) {
                         if (elements[i][j].getHeight(cellWidths[j] * allowedWidth - cellPaddingX * 2) + currentHeight < allowedHeight) {
                             extraRows[0][j] = elements[i][j];
-                            extraRows[1][j] = new ReportTextBox(pdfConfig.getBodyText(), pdfConfig.getLineDistance(), "");
+                            extraRows[1][j] = new ReportTextBox(pdfStyleSheet.getBodyText(), pdfStyleSheet.getLineDistance(), "");
                         } else {
                             ReportElement[] extraSplit = elements[i][j].split(cellWidths[j] * allowedWidth - cellPaddingX * 2, allowedHeight - currentHeight - 2 * cellPaddingY);
                             extraRows[0][j] = extraSplit[0];
@@ -306,12 +306,12 @@ public class ReportTable implements ReportElement {
                 if (splits[0] != null)
                     first[0][i] = splits[0];
                 else
-                    first[0][i] = new ReportTextBox(pdfConfig.getBodyText(), pdfConfig.getLineDistance(), "");
+                    first[0][i] = new ReportTextBox(pdfStyleSheet.getBodyText(), pdfStyleSheet.getLineDistance(), "");
 
                 if (splits[1] != null)
                     next[0][i] = splits[1];
                 else
-                    next[0][i] = new ReportTextBox(pdfConfig.getBodyText(), pdfConfig.getLineDistance(), "");
+                    next[0][i] = new ReportTextBox(pdfStyleSheet.getBodyText(), pdfStyleSheet.getLineDistance(), "");
             }
             ReportTable firstLine = createNewTableWithClonedSettings(first);
             ReportTable nextLines = createNewTableWithClonedSettings(next);

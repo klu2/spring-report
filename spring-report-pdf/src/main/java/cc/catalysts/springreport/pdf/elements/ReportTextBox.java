@@ -1,6 +1,6 @@
 package cc.catalysts.springreport.pdf.elements;
 
-import cc.catalysts.springreport.pdf.config.PdfTextConfig;
+import cc.catalysts.springreport.pdf.config.PdfTextStyle;
 import cc.catalysts.springreport.pdf.utils.ReportAlignType;
 import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.commons.lang.StringUtils;
@@ -15,13 +15,13 @@ import java.util.Map;
 
 public class ReportTextBox implements ReportElement {
 
-    private PdfTextConfig textConfig;
+    private PdfTextStyle textConfig;
     private String text;
     private final float lineDistance;
     private ReportAlignType align = ReportAlignType.LEFT;
     private Map<CacheKey, String[]> cache = new HashMap<CacheKey, String[]>();
 
-    public ReportTextBox(PdfTextConfig textConfig, float lineDistance, String text) {
+    public ReportTextBox(PdfTextStyle textConfig, float lineDistance, String text) {
         this.textConfig = textConfig;
         this.text = text == null ? "" : text;
         this.lineDistance = lineDistance;

@@ -1,7 +1,7 @@
 package cc.catalysts.springreport.pdf;
 
-import cc.catalysts.springreport.pdf.config.PdfPageConfig;
-import cc.catalysts.springreport.pdf.config.PdfTextConfig;
+import cc.catalysts.springreport.pdf.config.PdfPageLayout;
+import cc.catalysts.springreport.pdf.config.PdfTextStyle;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import org.springframework.core.io.Resource;
 
@@ -19,7 +19,7 @@ public interface PdfReportBuilder {
 
     PdfReportBuilder addText(String text);
 
-    PdfReportBuilder addText(String text, PdfTextConfig textConfig);
+    PdfReportBuilder addText(String text, PdfTextStyle textConfig);
 
     PdfReportBuilder addElement(ReportElement element);
 
@@ -29,8 +29,8 @@ public interface PdfReportBuilder {
 
     ReportTableBuilder startTable();
 
-    PdfReport buildReport(PdfPageConfig pageConfig);
+    PdfReport buildReport(PdfPageLayout pageConfig);
 
-    void printToFile(File outputFile, PdfPageConfig pageConfig, Resource templateResource) throws IOException;
+    void printToFile(File outputFile, PdfPageLayout pageConfig, Resource templateResource) throws IOException;
 
 }

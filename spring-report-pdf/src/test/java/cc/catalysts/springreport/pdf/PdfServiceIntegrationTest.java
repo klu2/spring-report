@@ -1,6 +1,6 @@
 package cc.catalysts.springreport.pdf;
 
-import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ public class PdfServiceIntegrationTest {
     PdfReportService pdfReportService;
 
     @Autowired
-    PdfConfig defaultConfig;
+    PdfStyleSheet defaultConfig;
 
     @Test
     public void loadContext() {

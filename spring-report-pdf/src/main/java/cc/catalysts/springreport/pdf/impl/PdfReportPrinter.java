@@ -1,12 +1,12 @@
 package cc.catalysts.springreport.pdf.impl;
 
 import cc.catalysts.springreport.pdf.PdfReport;
-import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportElementStatic;
 import cc.catalysts.springreport.pdf.elements.ReportImage;
 import cc.catalysts.springreport.pdf.elements.ReportTable;
-import cc.catalysts.springreport.pdf.config.PdfPageConfig;
+import cc.catalysts.springreport.pdf.config.PdfPageLayout;
 import cc.catalysts.springreport.pdf.utils.ReportFontType;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -25,10 +25,10 @@ import java.util.*;
  */
 class PdfReportPrinter {
 
-    private final PdfConfig configuration;
+    private final PdfStyleSheet configuration;
     private Map<ReportFontType, PDFont> fontLibrary = new HashMap<>();
 
-    public PdfReportPrinter(PdfConfig configuration) {
+    public PdfReportPrinter(PdfStyleSheet configuration) {
         this.configuration = configuration;
         initDefaultFontTypes();
     }
@@ -39,7 +39,7 @@ class PdfReportPrinter {
         fontLibrary.put(ReportFontType.BOLD, PDType1Font.HELVETICA_BOLD);
     }
 
-    public void printToStream(PdfPageConfig pageConfig, Resource templateResource, PdfReport report, OutputStream stream) throws IOException, COSVisitorException {
+    public void printToStream(PdfPageLayout pageConfig, Resource templateResource, PdfReport report, OutputStream stream) throws IOException, COSVisitorException {
         PDDocument page = print(pageConfig, templateResource, report);
         page.save(stream);
         page.close();
@@ -51,7 +51,7 @@ class PdfReportPrinter {
      * @return the printed PdfBox document
      * @throws java.io.IOException
      */
-    public PDDocument print(PdfPageConfig pageConfig, Resource templateResource, PdfReport report) throws IOException {
+    public PDDocument print(PdfPageLayout pageConfig, Resource templateResource, PdfReport report) throws IOException {
         pageConfig.setFooter(configuration.getFooterText().getFontSize() + pageConfig.getLineDistance());
 
         PrintData printData = new PrintData(templateResource, pageConfig);
@@ -152,9 +152,9 @@ class PdfReportPrinter {
 
     private static class PrintData {
         private Resource templateResource;
-        private PdfPageConfig pageConfig;
+        private PdfPageLayout pageConfig;
 
-        public PrintData(Resource templateResource, PdfPageConfig pageConfig) {
+        public PrintData(Resource templateResource, PdfPageLayout pageConfig) {
             this.templateResource = templateResource;
             this.pageConfig = pageConfig;
         }

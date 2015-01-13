@@ -10,20 +10,20 @@ import java.awt.*;
  * @author Klaus Lehner
  */
 @ConfigurationProperties(prefix = "cat.reporting.pdf", locations = "classpath:pdfreport.yaml", ignoreUnknownFields = false)
-public class PdfConfig {
+public class PdfStyleSheet {
 
     private float lineDistance = 1;
 
     private int sectionPadding = 10;
     private int headingPaddingAfter = 4;
 
-    private PdfTextConfig heading1Text = new PdfTextConfig(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
-    private PdfTextConfig bodyText = new PdfTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
+    private PdfTextStyle heading1Text = new PdfTextStyle(20, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
+    private PdfTextStyle bodyText = new PdfTextStyle(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
-    private PdfTextConfig tableTitleText = new PdfTextConfig(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
-    private PdfTextConfig tableBodyText = new PdfTextConfig(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
+    private PdfTextStyle tableTitleText = new PdfTextStyle(12, PDType1Font.HELVETICA_BOLD, ReportFontType.BOLD, Color.BLACK);
+    private PdfTextStyle tableBodyText = new PdfTextStyle(12, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
-    private PdfTextConfig footerText = new PdfTextConfig(7, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
+    private PdfTextStyle footerText = new PdfTextStyle(7, PDType1Font.HELVETICA, ReportFontType.NORMAL, Color.BLACK);
 
     public int getSectionPadding() {
         return sectionPadding;
@@ -41,43 +41,43 @@ public class PdfConfig {
         this.headingPaddingAfter = headingPaddingAfter;
     }
 
-    public PdfTextConfig getHeading1Text() {
+    public PdfTextStyle getHeading1Text() {
         return heading1Text;
     }
 
-    public void setHeading1Text(PdfTextConfig heading1Text) {
+    public void setHeading1Text(PdfTextStyle heading1Text) {
         this.heading1Text = heading1Text;
     }
 
-    public PdfTextConfig getBodyText() {
+    public PdfTextStyle getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(PdfTextConfig bodyText) {
+    public void setBodyText(PdfTextStyle bodyText) {
         this.bodyText = bodyText;
     }
 
-    public PdfTextConfig getTableTitleText() {
+    public PdfTextStyle getTableTitleText() {
         return tableTitleText;
     }
 
-    public void setTableTitleText(PdfTextConfig tableTitleText) {
+    public void setTableTitleText(PdfTextStyle tableTitleText) {
         this.tableTitleText = tableTitleText;
     }
 
-    public PdfTextConfig getTableBodyText() {
+    public PdfTextStyle getTableBodyText() {
         return tableBodyText;
     }
 
-    public void setTableBodyText(PdfTextConfig tableBodyText) {
+    public void setTableBodyText(PdfTextStyle tableBodyText) {
         this.tableBodyText = tableBodyText;
     }
 
-    public PdfTextConfig getFooterText() {
+    public PdfTextStyle getFooterText() {
         return footerText;
     }
 
-    public void setFooterText(PdfTextConfig footerText) {
+    public void setFooterText(PdfTextStyle footerText) {
         this.footerText = footerText;
     }
 

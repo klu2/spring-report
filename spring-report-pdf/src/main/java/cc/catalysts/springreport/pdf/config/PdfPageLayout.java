@@ -2,7 +2,7 @@ package cc.catalysts.springreport.pdf.config;
 
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 
-public class PdfPageConfig {
+public class PdfPageLayout {
 
     private float width;
     private float height;
@@ -13,23 +13,23 @@ public class PdfPageConfig {
     private float lineDistance;
     private float footer;
 
-    public static PdfPageConfig getPortraitA4Page() {
-        return new PdfPageConfig(595.27563F, 841.8898F, 28.346457F, 10, 100, 20, 1);
+    public static PdfPageLayout getPortraitA4Page() {
+        return new PdfPageLayout(595.27563F, 841.8898F, 28.346457F, 10, 100, 20, 1);
     }
 
-    public static PdfPageConfig getPortraitA4PageWithSmallTopMargin() {
-        return new PdfPageConfig(595.27563F, 841.8898F, 28.346457F, 10, 20, 20, 1);
+    public static PdfPageLayout getPortraitA4PageWithSmallTopMargin() {
+        return new PdfPageLayout(595.27563F, 841.8898F, 28.346457F, 10, 20, 20, 1);
     }
 
-    public static PdfPageConfig getPortraitA4PageWithDoubleMargins() {
-        return new PdfPageConfig(595.27563F, 841.8898F, 56.6929F, 56.6929F, 100, 20, 1);
+    public static PdfPageLayout getPortraitA4PageWithDoubleMargins() {
+        return new PdfPageLayout(595.27563F, 841.8898F, 56.6929F, 56.6929F, 100, 20, 1);
     }
 
-    public static PdfPageConfig getLandscapeA4Page() {
-        return new PdfPageConfig(841.8898F, 595.27563F, 28.346457F, 10, 100, 20, 1);
+    public static PdfPageLayout getLandscapeA4Page() {
+        return new PdfPageLayout(841.8898F, 595.27563F, 28.346457F, 10, 100, 20, 1);
     }
 
-    public PdfPageConfig(float width, float height, float marginLeft, float marginRight, float marginTop, float marginBottom, float lineDistance) {
+    public PdfPageLayout(float width, float height, float marginLeft, float marginRight, float marginTop, float marginBottom, float lineDistance) {
         this.width = width;
         this.height = height;
         this.marginLeft = marginLeft;

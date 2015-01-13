@@ -3,8 +3,8 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/PdfReport.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/config/PdfPageConfig.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/config/PdfTextConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/config/PdfPageLayout.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/config/PdfTextStyle.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/AbstractReportElement.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/PdfBoxHelper.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-report-pdf/src/main/java/cc/catalysts/springreport/pdf/elements/ReportElement.java" charset="UTF-8" />

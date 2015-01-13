@@ -3,7 +3,7 @@ package cc.catalysts.springreport.pdf.impl;
 import cc.catalysts.springreport.pdf.PdfReportBuilder;
 import cc.catalysts.springreport.pdf.ReportTableBuilder;
 import cc.catalysts.springreport.pdf.ReportTableRowBuilder;
-import cc.catalysts.springreport.pdf.config.PdfConfig;
+import cc.catalysts.springreport.pdf.config.PdfStyleSheet;
 import cc.catalysts.springreport.pdf.elements.ReportElement;
 import cc.catalysts.springreport.pdf.elements.ReportTable;
 import cc.catalysts.springreport.pdf.elements.ReportTextBox;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class ReportTableBuilderImpl implements ReportTableBuilder {
 
-    private final PdfConfig pdfConfig;
+    private final PdfStyleSheet pdfStyleSheet;
     private List<String> columnNames = new ArrayList<>();
     private List<Integer> columnWeights = new ArrayList<>();
     private List<List<String>> tableValues = new ArrayList<>();
@@ -26,8 +26,8 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
     /**
      * init with default style
      */
-    public ReportTableBuilderImpl(PdfConfig pdfConfig, PdfReportBuilder reportBuilder) {
-        this.pdfConfig = pdfConfig;
+    public ReportTableBuilderImpl(PdfStyleSheet pdfStyleSheet, PdfReportBuilder reportBuilder) {
+        this.pdfStyleSheet = pdfStyleSheet;
         this.reportBuilder = reportBuilder;
     }
 
@@ -82,7 +82,7 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
     }
 
     public ReportTable buildTableWithWidths(float[] widths) {
-        ReportTable reportTable = new ReportTable(pdfConfig, widths, toArray(), null);
+        ReportTable reportTable = new ReportTable(pdfStyleSheet, widths, toArray(), null);
         reportTable.setBorder(true);
         return reportTable;
     }
@@ -94,14 +94,14 @@ public class ReportTableBuilderImpl implements ReportTableBuilder {
         int col = 0;
         // header
         for (col = 0; col < columnNames.size(); col++) {
-            result[row][col] = new ReportTextBox(pdfConfig.getTableTitleText(), pdfConfig.getLineDistance(), columnNames.get(col));
+            result[row][col] = new ReportTextBox(pdfStyleSheet.getTableTitleText(), pdfStyleSheet.getLineDistance(), columnNames.get(col));
         }
         row++;
         // body
         for (List<String> rowValues : tableValues) {
             col = 0;
             for (String value : rowValues) {
-                result[row][col] = new ReportTextBox(pdfConfig.getTableBodyText(), pdfConfig.getLineDistance(), value);
+                result[row][col] = new ReportTextBox(pdfStyleSheet.getTableBodyText(), pdfStyleSheet.getLineDistance(), value);
                 col++;
             }
             row++;

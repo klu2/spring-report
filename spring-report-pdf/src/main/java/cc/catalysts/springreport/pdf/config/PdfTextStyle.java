@@ -7,14 +7,14 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import java.awt.*;
 import java.util.Map;
 
-public class PdfTextConfig {
+public class PdfTextStyle {
 
     private int fontSize;
     private PDFont font;
     private ReportFontType fontType;
     private Color color;
 
-    public PdfTextConfig(int fontSize, PDType1Font defaultFont, ReportFontType fontType, Color color) {
+    public PdfTextStyle(int fontSize, PDType1Font defaultFont, ReportFontType fontType, Color color) {
         this.fontSize = fontSize;
         this.font = defaultFont;
         this.fontType = fontType;
@@ -25,7 +25,7 @@ public class PdfTextConfig {
      * This constructor is used by spring when creating a font from properties.
      * @param config e.g. 10,Times-Roman,normal,#000000
      */
-    public PdfTextConfig(String config) {
+    public PdfTextStyle(String config) {
         String[] split = config.split(",");
         fontSize = Integer.parseInt(split[0]);
         font = new PDType1Font(split[1]);
